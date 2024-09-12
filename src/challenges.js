@@ -145,8 +145,8 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-/*
-const matrix1 = [
+
+/*const matrix1 = [
   [8, 2, 22, 97, 38, 15, 0],
   [49, 49, 99, 40, 17, 81, 18],
   [81, 49, 31, 73, 55, 79, 14],
@@ -160,16 +160,24 @@ function greatestProduct(matrix) {
   let maxProd = 0;
   let prod;
 
-  for (let i = 0; i < (matrix.length - 3); i++){
-    for (let j = 0; j < (matrix[i].length - 3); j++){
-      prod = matrix[i][j] * matrix[i][j+1] * matrix[i][j+2] * matrix[i][j+3];
-      if (prod > maxProd){
-        maxProd = prod;
+  for (let i = 0; i < matrix.length; i++){
+    for (let j = 0; j < matrix[i].length; j++){
+      if (((i+3) >= matrix.length) && ((j+3) >= matrix.length)){ 
+        continue;
       }
 
-      prod = matrix[i][j] * matrix[i+1][j] * matrix[i+2][j] * matrix[i+2][j];
-      if (prod > maxProd){
-        maxProd = prod;
+      if ((j+3) < matrix.length){ 
+        prod = matrix[i][j] * matrix[i][j+1] * matrix[i][j+2] * matrix[i][j+3];
+        if (prod > maxProd){
+          maxProd = prod;
+        }
+      }
+
+      if ((i+3) < matrix.length){ 
+        prod = matrix[i][j] * matrix[i+1][j] * matrix[i+2][j] * matrix[i+3][j];
+        if (prod > maxProd){
+          maxProd = prod;
+        }
       }
     }
   }
