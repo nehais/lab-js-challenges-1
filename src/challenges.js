@@ -13,13 +13,37 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(repeatedWords, searchWord) {
+  let wordCount = 0;
+  if (!repeatedWords || repeatedWords.length ===0){
+    return wordCount;
+  }
 
+  let idx = repeatedWords.indexOf(searchWord);
 
+  while(idx >= 0){
+    wordCount++;
+    idx = repeatedWords.indexOf(searchWord, idx+1);
+  }
+  return wordCount;
+}
+
+console.log(howManyTimes(repeatedWords, "matter1"));
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let numSeq = [];
+  if (n === 0){
+    return numSeq;
+  }
+
+  for (let i = 0; i<=n; i++){
+    numSeq.push(i)
+  }
+
+  return numSeq;
+}
 
 
 
@@ -27,7 +51,16 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+  let multipliedArr = [];
+
+  numbers.forEach(n =>{
+    let newNo = n * multiplier;
+    multipliedArr.push(newNo);
+  })
+
+  return multipliedArr;
+}
 
 
 
@@ -36,9 +69,22 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
 
+  if (!original || (original.length ===0)){
+    return null;
+  }
 
+  for (let i=0; i < toRemove.length; i++){
+
+    let idx = original.indexOf(toRemove[i]);
+    while(idx >= 0){
+      original.splice(idx,1);
+      idx = original.indexOf(toRemove[i]);
+    }
+  }
+  return original;
+}
 
 
 // Iteration 5 | Unique Arrays
@@ -56,8 +102,22 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(duplicateWords ) {
+  if (!duplicateWords || (duplicateWords.length ===0)){
+    return null;
+  }
 
+  for (let i = 0; i < duplicateWords.length; i++){
+
+    let idx = duplicateWords.indexOf(duplicateWords[i], (i+1));
+    while(idx >= 0){
+      duplicateWords.splice(idx,1);
+      idx = duplicateWords.indexOf(duplicateWords[i], (i+1));
+    }
+  }
+
+  return duplicateWords;
+}
 
 
 
