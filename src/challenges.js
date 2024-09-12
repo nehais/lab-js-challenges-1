@@ -70,20 +70,19 @@ const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
 function filterOut(original, toRemove) {
+  let filteredArray = [];
 
   if (!original || (original.length ===0)){
     return null;
   }
 
-  for (let i=0; i < toRemove.length; i++){
+  for (let i=0; i < original.length; i++){
 
-    let idx = original.indexOf(toRemove[i]);
-    while(idx >= 0){
-      original.splice(idx,1);
-      idx = original.indexOf(toRemove[i]);
+    if (!toRemove.includes(original[i])){
+      filteredArray.push(original[i]);
     }
   }
-  return original;
+  return filteredArray;
 }
 
 
@@ -103,23 +102,23 @@ const duplicateWords = [
 ];
 
 function uniquifyArray(duplicateWords ) {
+  let uniqueArray = [];
+
   if (!duplicateWords || (duplicateWords.length ===0)){
     return null;
   }
 
   for (let i = 0; i < duplicateWords.length; i++){
 
-    let idx = duplicateWords.indexOf(duplicateWords[i], (i+1));
-    while(idx >= 0){
-      duplicateWords.splice(idx,1);
-      idx = duplicateWords.indexOf(duplicateWords[i], (i+1));
+    if (!uniqueArray.includes(duplicateWords[i])){
+      uniqueArray.push(duplicateWords[i]);
     }
   }
 
-  return duplicateWords;
+  return uniqueArray;
 }
 
-
+uniquifyArray(duplicateWords );
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
 const matrix = [
